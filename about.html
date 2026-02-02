@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Kopi Saropah</title>
+    <meta name="description" content="Learn about Kopi Saropah's journey and philosophy of trust-based coffee culture.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 60px 20px;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .about-hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        .founder-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .founder-card {
+            background: var(--color-bg-main);
+            border-radius: 16px;
+            padding: 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .founder-card blockquote {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-primary);
+            line-height: 1.8;
+            margin: 0 0 30px;
+            padding-left: 30px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .founder-signature {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .founder-signature img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--color-accent);
+        }
+
+        .founder-signature div h4 {
+            margin: 0 0 5px;
+            color: var(--color-primary-dark);
+        }
+
+        .founder-signature div p {
+            margin: 0;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+        }
+
+        .value-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+
+        .timeline-modern {
+            position: relative;
+            padding: 60px 0;
+        }
+
+        .timeline-modern::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--color-accent), var(--color-primary));
+            transform: translateX(-50%);
+        }
+
+        .timeline-event {
+            display: flex;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-event:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-accent);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .timeline-content h3 {
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .founder-card {
+                padding: 40px 30px;
+            }
+
+            .timeline-modern::before {
+                left: 20px;
+            }
+
+            .timeline-event {
+                flex-direction: column !important;
+                padding-left: 60px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-year {
+                left: 20px;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container d-flex justify-between align-center">
+            <a href="index.html" class="logo">KOPI SAROPAH</a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="visit.html">Visit</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="menu.html" class="btn">View Menu</a>
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-content fade-in">
+            <h1>Our Story</h1>
+            <p>Born from a simple belief: trust is the foundation of community.<br>
+                We're redefining coffee culture, one honest cup at a time.</p>
+        </div>
+    </section>
+
+    <!-- Founder's Message -->
+    <section class="founder-section">
+        <div class="container">
+            <div class="section-title text-center fade-in">
+                <span>Message</span>
+                <h2>From Our Founder</h2>
+            </div>
+            <div class="founder-card fade-in" style="margin-top: 50px;">
+                <blockquote>
+                    "Kopi Saropah dimulai dari pertanyaan sederhana: bagaimana jika kita membangun bisnis berdasarkan
+                    kepercayaan, bukan transaksi? Kami percaya bahwa setiap orang memiliki hati nurani untuk membayar
+                    sesuai dengan nilai yang mereka rasakan. Ini bukan hanya tentang kopi—ini tentang membangun
+                    komunitas yang saling menghargai."
+                </blockquote>
+                <div class="founder-signature">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Founder">
+                    <div>
+                        <h4>Budi Hartono</h4>
+                        <p>Founder & Head Roaster</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section style="padding: 100px 0; background: linear-gradient(to bottom, white 0%, #f8f5f2 100%);">
+        <div class="container">
+            <div class="section-title text-center fade-in">
+                <span>Journey</span>
+                <h2>Our Timeline</h2>
+                <p style="max-width: 600px; margin: 15px auto 0; color: var(--color-text-muted);">From a humble pop-up
+                    to a community movement</p>
+            </div>
+            <div style="position: relative; max-width: 900px; margin: 60px auto 0; padding: 40px 0;">
+                <!-- Center Line -->
+                <div
+                    style="position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--color-accent), var(--color-primary)); transform: translateX(-50%);">
+                </div>
+
+                <!-- 2020 - Left -->
+                <div class="fade-in" style="display: flex; margin-bottom: 80px; position: relative;">
+                    <div style="flex: 1; text-align: right; padding-right: 50px;">
+                        <div
+                            style="background: linear-gradient(135deg, #2C1810 0%, #1A1A1A 100%); padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); position: relative;">
+                            <div
+                                style="position: absolute; top: 50%; right: -15px; width: 30px; height: 30px; background: var(--color-accent); border-radius: 50%; transform: translateY(-50%); border: 4px solid white; box-shadow: 0 0 0 3px var(--color-accent);">
+                            </div>
+                            <div
+                                style="display: flex; align-items: center; gap: 15px; justify-content: flex-end; margin-bottom: 15px;">
+                                <div
+                                    style="width: 50px; height: 50px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                        <path d="M2 17l10 5 10-5"></path>
+                                        <path d="M2 12l10 5 10-5"></path>
+                                    </svg>
+                                </div>
+                                <h3 style="color: var(--color-accent); margin: 0; font-size: 1.5rem;">The Beginning</h3>
+                            </div>
+                            <p style="color: rgba(255,255,255,0.85); line-height: 1.7; margin: 0;">Started as a small
+                                pop-up stall with a radical idea: let customers pay what they feel is fair.</p>
+                        </div>
+                        <div style="text-align: right; margin-top: 10px;">
+                            <span
+                                style="display: inline-block; background: var(--color-accent); color: white; padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 1.1rem;">2020</span>
+                        </div>
+                    </div>
+                    <div style="flex: 1;"></div>
+                </div>
+
+                <!-- 2021 - Right -->
+                <div class="fade-in" style="display: flex; margin-bottom: 80px; position: relative;">
+                    <div style="flex: 1;"></div>
+                    <div style="flex: 1; padding-left: 50px;">
+                        <div
+                            style="background: linear-gradient(135deg, #C19A6B 0%, #8B6F47 100%); padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(193, 154, 107, 0.3); position: relative;">
+                            <div
+                                style="position: absolute; top: 50%; left: -15px; width: 30px; height: 30px; background: white; border-radius: 50%; transform: translateY(-50%); border: 4px solid var(--color-accent); box-shadow: 0 0 0 3px white;">
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                                <div
+                                    style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="#2C1810" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg>
+                                </div>
+                                <h3 style="color: white; margin: 0; font-size: 1.5rem;">First Location</h3>
+                            </div>
+                            <p style="color: rgba(255,255,255,0.95); line-height: 1.7; margin: 0;">Opened our first
+                                brick-and-mortar cafe in Jakarta Selatan, proving the model works.</p>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <span
+                                style="display: inline-block; background: white; color: var(--color-primary); padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 1.1rem; border: 2px solid var(--color-accent);">2021</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2023 - Left -->
+                <div class="fade-in" style="display: flex; margin-bottom: 80px; position: relative;">
+                    <div style="flex: 1; text-align: right; padding-right: 50px;">
+                        <div
+                            style="background: linear-gradient(135deg, #5D4037 0%, #3E2723 100%); padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative;">
+                            <div
+                                style="position: absolute; top: 50%; right: -15px; width: 30px; height: 30px; background: var(--color-accent); border-radius: 50%; transform: translateY(-50%); border: 4px solid white; box-shadow: 0 0 0 3px var(--color-accent);">
+                            </div>
+                            <div
+                                style="display: flex; align-items: center; gap: 15px; justify-content: flex-end; margin-bottom: 15px;">
+                                <div
+                                    style="width: 50px; height: 50px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                </div>
+                                <h3 style="color: var(--color-accent); margin: 0; font-size: 1.5rem;">Community Growth
+                                </h3>
+                            </div>
+                            <p style="color: rgba(255,255,255,0.85); line-height: 1.7; margin: 0;">Reached 10,000+ loyal
+                                customers who believe in our philosophy of trust and transparency.</p>
+                        </div>
+                        <div style="text-align: right; margin-top: 10px;">
+                            <span
+                                style="display: inline-block; background: var(--color-accent); color: white; padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 1.1rem;">2023</span>
+                        </div>
+                    </div>
+                    <div style="flex: 1;"></div>
+                </div>
+
+                <!-- 2026 - Right -->
+                <div class="fade-in" style="display: flex; position: relative;">
+                    <div style="flex: 1;"></div>
+                    <div style="flex: 1; padding-left: 50px;">
+                        <div
+                            style="background: linear-gradient(135deg, #1A1A1A 0%, #000000 100%); padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); border: 2px solid var(--color-accent); position: relative;">
+                            <div
+                                style="position: absolute; top: 50%; left: -15px; width: 30px; height: 30px; background: linear-gradient(135deg, var(--color-accent), #FFD700); border-radius: 50%; transform: translateY(-50%); border: 4px solid white; box-shadow: 0 0 0 3px var(--color-accent);">
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                                <div
+                                    style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--color-accent), #FFD700); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polygon
+                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                        </polygon>
+                                    </svg>
+                                </div>
+                                <h3 style="color: var(--color-accent); margin: 0; font-size: 1.5rem;">Today & Beyond
+                                </h3>
+                            </div>
+                            <p style="color: rgba(255,255,255,0.85); line-height: 1.7; margin: 0;">Continuing to inspire
+                                a movement of trust-based businesses across Indonesia.</p>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <span
+                                style="display: inline-block; background: linear-gradient(135deg, var(--color-accent), #FFD700); color: white; padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 1.1rem;">2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">KOPI SAROPAH</a>
+                    <p>Ngopi Sepuasnya, Bayar Seikhlasnya.<br>A sanctuary for coffee lovers based on trust.</p>
+                    <div class="footer-social">
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg></a>
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                </path>
+                            </svg></a>
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="menu.html">Our Menu</a></li>
+                        <li><a href="visit.html">Visit & Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Visit Us</h4>
+                    <p>Jl. Kopi Sejahtera No. 88<br>Jakarta Selatan, Indonesia</p>
+                    <p style="margin-top: 15px; color: white;">Open Daily:</p>
+                    <p>08:00 - 22:00 WIB</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Join our community for exclusive updates.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!')">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit">Go</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>&copy; 2026 Kopi Saropah. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
